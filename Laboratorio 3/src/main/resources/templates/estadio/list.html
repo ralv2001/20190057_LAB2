@@ -24,7 +24,7 @@
           <td th:text="${jugador.nombre}"></td>
           <td th:text="${jugador.edad}"></td>
           <td th:text="${jugador.posicion}"></td>
-          <td><a class="btn btn-danger" th:href="@{'/shipper/borrar?id=' + ${shipper.shipperId}}">Borrar</a></td>
+          <td><a class="btn btn-danger" th:href="@{'/jugador/borrar?id=' + ${jugador.idSeleccion}}">Borrar</a></td>
         </tr>
       </table>
     </div>
