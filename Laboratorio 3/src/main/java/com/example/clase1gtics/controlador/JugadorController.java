@@ -22,7 +22,6 @@ public class JugadorController {
         this.jugadorRepository = jugadorRepository;
     }
 
-
     @GetMapping(value = {"", "/listar"})
     public String listar(Model model) {
         model.addAttribute("lista", jugadorRepository.findAll());
