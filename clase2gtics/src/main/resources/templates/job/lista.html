@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <h1>Lista de trabajos</h1>
+        <a th:href="@{/job/crearform}">Crear trabajo</a>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Trabajo</th>
+                <th>Buscar F1</th>
+                <th>Buscar F2</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Estudiante</td>
+                <td><a href="/lab1/job/buscar?id=1&nombre=Luis&apellido=Quispe">F1</a></td>
+                <td><a href="/lab1/job/buscarF2/1/Mayrym/Arroyo?dni=123">F2</a></td>
+            </tr>
+        </table>
+    </body>
+</html>

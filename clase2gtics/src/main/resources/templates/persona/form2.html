@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bootstrap demo</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+              crossorigin="anonymous">
+    </head>
+    <body>
+        <h1>Holaaaaaa</h1>
+
+        <form method="post" th:action="@{/persona/guardar}" th:object="${persona}">
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" placeholder="nombre" th:field="*{nombre}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Apellido</label>
+                <input type="text" class="form-control" placeholder="apellido" th:field="*{apellido}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email address</label>
+                <input type="text" class="form-control" placeholder="Email" th:field="*{email}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Edad</label>
+                <input type="text" class="form-control" placeholder="Edad" name="edadStr">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Libro</label>
+                <input type="text" class="form-control" placeholder="Libro" name="libro">
+            </div>
+            <div class="mb-3">
+                <select class="form-select" name="jefe" >
+                    <option th:each="pers : ${lista}" th:text="|${pers.nombre} ${pers.apellido}|" th:value="${pers.id}">Juan</option>
+                </select>
+            </div>
+            <input type="submit" class="btn btn-success" value="Guardar"/>
+        </form>
+
+        <h3>Lista de personas</h3>
+        <table class="table">
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Even or Odd</th>
+                <th>AAA</th>
+            </tr>
+            <tr th:each="per,info : ${lista}">
+                <td th:text="${info.index + 1}">150</td>
+                <td th:text="${per.nombre}" th:if="${per.nombre eq 'Diego'}">Juan</td>
+                <td th:text="|no es diego, es ${per.nombre}|" th:unless="${per.nombre eq 'Diego'}">No es diego</td>
+                <td th:text="${per.apellido}">Perez</td>
+                <td th:text="${info.even ? 'par' : 'impar'}"></td>
+                <td th:text="${per.id >= 0 ? 'id mayor que cero' : 'id < 0' }"></td>
+            </tr>
+        </table>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+                crossorigin="anonymous"></script>
+    </body>
+</html>
