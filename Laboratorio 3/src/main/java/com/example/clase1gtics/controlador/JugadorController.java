@@ -43,15 +43,19 @@ public class JugadorController {
         return "jugador/newForm";
     }
 
-    /*
+    //UNA VEZ EL USUARIO HAYA DADO CLIC EN SUBMIT, LO LLEVARÁ A ESTA PORCIÓN DE CÓDIGO
     @PostMapping("/guardar")
+    //NOTEMOS QUE GRACIAS AL DATABINDING, EL CONTENIDO DEL FORMULARIO SE VA A GUARDAR EN OBJETO jugador
     public String guardar(Jugador jugador) {
-        String x = "hola";
         jugadorRepository.save(jugador);
-        String y = "chau";
+
+        //SABES QUE LOS RETURN NORMALMENTE REDIRECCIONAN A UN HTML, PERO, ¿Y SI QUIERO REDIRECCIONAR A UNA
+        //RUTA DE UN CONTROLADOR? FACIL, USO LO QUE SE LLAMA redirect y luego inserto la ruta del controlador
+        //que quiero
         return "redirect:/jugador/listar";
     }
 
+    /*
     @GetMapping("/borrar")
     public String borrar(@RequestParam("id") int id) {
 
