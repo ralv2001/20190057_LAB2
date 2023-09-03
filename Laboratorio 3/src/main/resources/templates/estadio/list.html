@@ -19,7 +19,7 @@
           <th>Provincia</th>
           <th>Club</th>
         </tr>
-        <tr th:each="jugador, info: ${lista}">
+        <tr th:each="estadio, info: ${lista}">
           <td th:text="${info.index + 1}"></td>
           <td th:text="${jugador.nombre}"></td>
           <td th:text="${jugador.edad}"></td>

@@ -34,6 +34,6 @@ public class Jugador {
     private String club;
 
     //nullable = false significa que es not null
-    @Column(name = "idSeleccion",nullable = false)
-    private Integer idSeleccion;
+    @Column(name = "sn_idSeleccion",nullable = false)
+    private Integer sn_idSeleccion;
 }

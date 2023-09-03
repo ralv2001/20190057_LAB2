@@ -11,7 +11,7 @@
   <body>
     <div class="container">
       <h2>Lista Jugadores</h2>
-      <a class="btn btn-primary mt-4 mb-4" th:href="@{/shipper/new}">Nuevo Jugador</a>
+      <a class="btn btn-primary mt-4 mb-4" th:href="@{/jugador/new}">Nuevo Jugador</a>
       <table class="table table-sm">
         <tr>
           <th>#</th>
@@ -21,14 +21,14 @@
           <th>Club</th>
           <th>Seleccion</th>
         </tr>
-        <tr th:each="jugador, info: ${lista}">
+        <tr th:each="jugador, info: ${listajugadoreshtml}">
           <td th:text="${info.index + 1}"></td>
           <td th:text="${jugador.nombre}"></td>
           <td th:text="${jugador.edad}"></td>
           <td th:text="${jugador.posicion}"></td>
           <td th:text="${jugador.club}"></td>
-          <td th:text="${jugador.idSeleccion}"></td>
-          <td><a class="btn btn-danger" th:href="@{'/shipper/borrar?id=' + ${jugador.idSeleccion}}">Borrar</a></td>
+          <td th:text="${jugador.sn_idSeleccion}"></td>
+          <td><a class="btn btn-danger" th:href="@{'/jugador/borrar?id=' + ${jugador.idJugador}}">Borrar</a></td>
         </tr>
       </table>
     </div>
