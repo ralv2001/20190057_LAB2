@@ -23,19 +23,27 @@ public class JugadorController {
         this.jugadorRepository = jugadorRepository;
     }
 
+    //LISTAMOS LOS JUGADORES, RECORDEMOS QUE LISTAR ES ÚNICAMENTE MÉTODO GET
     @GetMapping(value = {"", "/listar"})
     public String listar(Model model) {
+        //CREAMOS UNA LISTA DE JUGADORES, LLAMADA listajugadores, y guardamos ahí a todos los jugadores que salgan
+        //CON EL REPOSITORIO
         List<Jugador> listajugadores = jugadorRepository.findAll();
+        //AHORA PONEMOS EL MODEL PARA MANDARLO A LA VISTA HTML:
+        //GUARDAMOS NUESTRA LISTA QUE ACABAMOS DE CREAR "listajugadores" en nuestro variable "listajugadoreshtml"
+        //ESTA ÚLTIMA ES LA QUE MANDAREMOS AL HTML
         model.addAttribute("listajugadoreshtml", listajugadores);
         return "jugador/list";
     }
 
-    /*
+    //HACEMOS UNA RUTA PARA LA CREACION DEL FORMULARIO
     @GetMapping("/new")
     public String crear() {
+        //ESTO SOLO SIRVE PARA REGRESAR EL HTML CUANDO LE DAN A jugador/new
         return "jugador/newForm";
     }
 
+    /*
     @PostMapping("/guardar")
     public String guardar(Jugador jugador) {
         String x = "hola";

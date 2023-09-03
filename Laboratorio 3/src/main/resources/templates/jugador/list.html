@@ -21,14 +21,17 @@
           <th>Club</th>
           <th>Seleccion</th>
         </tr>
-        <tr th:each="jugador, info: ${listajugadoreshtml}">
+        <!-- Notar que jugadorsito es la variable que va a hacer la iteración en "listajugadoreshtml",
+         y "listajugadoreshtml" es la variable
+         en verde que se trajo del model. -->
+        <tr th:each="jugadorsito, info: ${listajugadoreshtml}">
           <td th:text="${info.index + 1}"></td>
-          <td th:text="${jugador.nombre}"></td>
-          <td th:text="${jugador.edad}"></td>
-          <td th:text="${jugador.posicion}"></td>
-          <td th:text="${jugador.club}"></td>
-          <td th:text="${jugador.sn_idSeleccion}"></td>
-          <td><a class="btn btn-danger" th:href="@{'/jugador/borrar?id=' + ${jugador.idJugador}}">Borrar</a></td>
+          <td th:text="${jugadorsito.nombre}"></td>
+          <td th:text="${jugadorsito.edad}"></td>
+          <td th:text="${jugadorsito.posicion}"></td>
+          <td th:text="${jugadorsito.club}"></td>
+          <td th:text="${jugadorsito.sn_idSeleccion}"></td>
+          <td><a class="btn btn-danger" th:href="@{'/jugador/borrar?id=' + ${jugadorsito.idJugador}}">Borrar</a></td>
         </tr>
       </table>
     </div>

@@ -10,8 +10,8 @@
   </head>
   <body>
     <div class="container">
-      <h2>Lista Jugadores</h2>
-      <a class="btn btn-primary mt-4 mb-4" th:href="@{/shipper/new}">Nuevo Jugador</a>
+      <h2>Lista Estadios</h2>
+      <a class="btn btn-primary mt-4 mb-4" th:href="@{/estadio/new}">Nuevo Jugador</a>
       <table class="table table-sm">
         <tr>
           <th>#</th>
@@ -19,12 +19,12 @@
           <th>Provincia</th>
           <th>Club</th>
         </tr>
-        <tr th:each="estadio, info: ${lista}">
+        <tr th:each="estadiogozu, info: ${listaestadioshtml}">
           <td th:text="${info.index + 1}"></td>
-          <td th:text="${jugador.nombre}"></td>
-          <td th:text="${jugador.edad}"></td>
-          <td th:text="${jugador.posicion}"></td>
-          <td><a class="btn btn-danger" th:href="@{'/jugador/borrar?id=' + ${jugador.idSeleccion}}">Borrar</a></td>
+          <td th:text="${estadiogozu.nombre}"></td>
+          <td th:text="${estadiogozu.provincia}"></td>
+          <td th:text="${estadiogozu.club} != null ? ${estadiogozu.club} : 'No tiene propietario'">No tiene propietario</td>
+          <td><a class="btn btn-danger" th:href="@{'/jugador/borrar?id=' + ${estadiogozu.idEstadio}}">Borrar</a></td>
         </tr>
       </table>
     </div>
