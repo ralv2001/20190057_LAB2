@@ -23,6 +23,10 @@
           <td th:text="${info.index + 1}"></td>
           <td th:text="${estadiogozu.nombre}"></td>
           <td th:text="${estadiogozu.provincia}"></td>
+          <!-- NOTA CÓMO HE HECHO ESTE IF, PARA QUE CUANDO EL VALOR SEA NULO, SE MUESTRE EL MENSAJE DE No tiene propietario
+          QUE ESTÁ EN LA SECCIÓN VERDE-->
+          <!-- ESTA SENTENCIA DICE:
+          SI EL club DEL ESTADIO NO ES NULO, ENTONCES MUESTRA EL CLUB DEL ESTADIO, SINO, MUESTRA EL MENSAJE: "No tiene propietario"-->
           <td th:text="${estadiogozu.club} != null ? ${estadiogozu.club} : 'No tiene propietario'">No tiene propietario</td>
           <td><a class="btn btn-danger" th:href="@{'/jugador/borrar?id=' + ${estadiogozu.idEstadio}}">Borrar</a></td>
         </tr>
