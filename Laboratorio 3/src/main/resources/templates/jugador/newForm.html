@@ -14,6 +14,9 @@
             <hr/>
             <form method="post" th:action="@{/jugador/guardar}">
                 <div class="mb-3">
+                    <!-- NOTA IMPORTANTISIMA, ESTOS VALORES DEBEN SER IGUALES A LOS ATRIBUTOS DE UNA TABLA DE BASE DE DATOS,
+                    PARA QUE ASÍ FUNCIONE EL DATABINDING, EN ESTE CASO:
+                    label for="nombre" -->
                     <label for="nombre">Nombre</label>
                     <input name="nombre" type="text" class="form-control" id="nombre">
                 </div>
@@ -49,5 +52,3 @@
             integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
             crossorigin="anonymous"></script>
 </html>
-
-
