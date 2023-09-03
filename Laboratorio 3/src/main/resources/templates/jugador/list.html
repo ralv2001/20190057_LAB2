@@ -31,6 +31,7 @@
           <td th:text="${jugadorsito.posicion}"></td>
           <td th:text="${jugadorsito.club}"></td>
           <td th:text="${jugadorsito.sn_idSeleccion}"></td>
+          <!-- Recordar que vamos a eliminar por ID al jugador, por lo que vamos a justamente pasar el id del jugador antes de borrarlo -->
           <td><a class="btn btn-danger" th:href="@{'/jugador/borrar?id=' + ${jugadorsito.idJugador}}">Borrar</a></td>
         </tr>
       </table>

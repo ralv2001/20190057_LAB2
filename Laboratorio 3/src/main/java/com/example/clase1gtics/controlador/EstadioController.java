@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/estadio")
@@ -50,6 +52,19 @@ public class EstadioController {
         //SABES QUE LOS RETURN NORMALMENTE REDIRECCIONAN A UN HTML, PERO, ¿Y SI QUIERO REDIRECCIONAR A UNA
         //RUTA DE UN CONTROLADOR? FACIL, USO LO QUE SE LLAMA redirect y luego inserto la ruta del controlador
         //que quiero
+        return "redirect:/estadio/listar";
+    }
+
+    @GetMapping("/borrar")
+    public String borrar(@RequestParam("id") int id) {
+
+        Optional<Estadio> optional = estadioRepository.findById(id);
+
+        if (optional.isPresent()) {
+            estadioRepository.deleteById(id);
+        }
+
+        //UNA VEZ SE BORRA, SE VUELVE A IR A LA PÁGINA DE LISTAR ESTADIO A TRAVÉS DEL CONTROLLER "redirect:/estadio/listar"
         return "redirect:/estadio/listar";
     }
 }
