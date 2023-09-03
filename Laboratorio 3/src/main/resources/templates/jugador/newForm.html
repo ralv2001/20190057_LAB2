@@ -26,12 +26,17 @@
                     <input name="posicion" type="text" class="form-control" id="posicion">
                 </div>
                 <div class="mb-3">
-                    <label for="phone">Club</label>
-                    <input name="phone" type="text" class="form-control" id="phone">
+                    <label for="club">Club</label>
+                    <input name="club" type="text" class="form-control" id="club">
                 </div>
                 <div class="mb-3">
-                    <label for="phone">Seleccion Nacional</label>
-                    <input name="phone" type="text" class="form-control" id="phone">
+                    <label for="sn_idSeleccion">Seleccion Nacional</label>
+                    <select id="sn_idSeleccion" name="sn_idSeleccion" class="form-select">
+                        <option th:each="iterativaselecciones : ${listaseleccioneshtml}"
+                                th:value="${iterativaselecciones.idSeleccion}"
+                                th:text="${iterativaselecciones.nombre}">
+                        </option>
+                    </select>
                 </div>
 
                 <!-- ACÁ LE DIREMOS QUE SI LE DA A CANCELAR, SE VUELVAN A LISTAR LOS USUARIOS -->

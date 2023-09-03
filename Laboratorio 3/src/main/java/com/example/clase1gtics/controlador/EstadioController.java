@@ -1,10 +1,12 @@
 package com.example.clase1gtics.controlador;
 
 import com.example.clase1gtics.entidad.Estadio;
+import com.example.clase1gtics.entidad.Jugador;
 import com.example.clase1gtics.repositorio.EstadioRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -30,5 +32,24 @@ public class EstadioController {
         //ESTA ÚLTIMA ES LA QUE MANDAREMOS AL HTML
         model.addAttribute("listaestadioshtml", listaestadios);
         return "estadio/list";
+    }
+
+    //HACEMOS UNA RUTA PARA LA CREACION DEL FORMULARIO
+    @GetMapping("/new")
+    public String crear() {
+        //ESTO SOLO SIRVE PARA REGRESAR EL HTML CUANDO LE DAN A jugador/new
+        return "estadio/newForm";
+    }
+
+    //UNA VEZ EL USUARIO HAYA DADO CLIC EN SUBMIT, LO LLEVARÁ A ESTA PORCIÓN DE CÓDIGO
+    @PostMapping("/guardar")
+    //NOTEMOS QUE GRACIAS AL DATABINDING, EL CONTENIDO DEL FORMULARIO SE VA A GUARDAR EN OBJETO jugador
+    public String guardar(Estadio estadio) {
+        estadioRepository.save(estadio);
+
+        //SABES QUE LOS RETURN NORMALMENTE REDIRECCIONAN A UN HTML, PERO, ¿Y SI QUIERO REDIRECCIONAR A UNA
+        //RUTA DE UN CONTROLADOR? FACIL, USO LO QUE SE LLAMA redirect y luego inserto la ruta del controlador
+        //que quiero
+        return "redirect:/estadio/listar";
     }
 }

@@ -1,16 +1,16 @@
 package com.example.clase1gtics.controlador;
 
 import com.example.clase1gtics.entidad.Jugador;
+import com.example.clase1gtics.entidad.Seleccion;
 import com.example.clase1gtics.repositorio.JugadorRepository;
+import com.example.clase1gtics.repositorio.SeleccionRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/jugador")
@@ -18,9 +18,11 @@ import java.util.Optional;
 public class JugadorController {
 
     final JugadorRepository jugadorRepository;
+    final SeleccionRepository seleccionRepository;
 
-    public JugadorController(JugadorRepository jugadorRepository) {
+    public JugadorController(JugadorRepository jugadorRepository, SeleccionRepository seleccionRepository) {
         this.jugadorRepository = jugadorRepository;
+        this.seleccionRepository = seleccionRepository;
     }
 
     //LISTAMOS LOS JUGADORES, RECORDEMOS QUE LISTAR ES ÚNICAMENTE MÉTODO GET
@@ -38,7 +40,10 @@ public class JugadorController {
 
     //HACEMOS UNA RUTA PARA LA CREACION DEL FORMULARIO
     @GetMapping("/new")
-    public String crear() {
+    public String crear(Model model, Seleccion seleccion) {
+        List<Seleccion> listitaselecciones = seleccionRepository.findAll();
+        //COMO HAY UN COMBO BOX, SERÁ NECESARIO PASARLE LA INFORMACIÓN DE LAS SELECCIONES
+        model.addAttribute("listaseleccioneshtml", listitaselecciones);
         //ESTO SOLO SIRVE PARA REGRESAR EL HTML CUANDO LE DAN A jugador/new
         return "jugador/newForm";
     }

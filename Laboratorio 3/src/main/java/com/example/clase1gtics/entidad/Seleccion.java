@@ -25,7 +25,7 @@ public class Seleccion {
     @Column(name = "tecnico",nullable = false,length = 45)
     private String tecnico;
 
-    @Column(name = "idEstadios",nullable = false,length = 45)
-    private Integer idEstadios;
+    @Column(name = "estadio_idEstadio",nullable = false,length = 45)
+    private Integer estadio_idEstadio;
 }
 
