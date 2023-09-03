@@ -62,21 +62,22 @@ public class JugadorController {
         return "redirect:/jugador/listar";
     }
 
-
     @GetMapping("/borrar")
     public String borrar(@RequestParam("id") int id) {
 
+        // Optional es una clase contenedora que puede o no contener un valor no nulo.
+        // Aquí, se utiliza para buscar un Jugador en el repositorio usando el id proporcionado.
+        // Si el Jugador existe, el Optional contendrá el Jugador. Si no existe, el Optional estará vacío.
         Optional<Jugador> optional = jugadorRepository.findById(id);
 
+        // Verificar si el Optional contiene un Jugador (es decir, si se encontró un Jugador con el id proporcionado)
         if (optional.isPresent()) {
+            // Borrar el Jugador con el id proporcionado del repositorio
             jugadorRepository.deleteById(id);
         }
 
-        //UNA VEZ SE BORRA, SE VUELVE A IR A LA PÁGINA DE LISTAR JUGADOR A TRAVÉS DEL CONTROLLER "redirect:/jugador/listar"
+        // Redirigir al navegador a la página de listado de jugadores
         return "redirect:/jugador/listar";
     }
-
-
-
 
 }
