@@ -80,4 +80,21 @@ public class JugadorController {
         return "redirect:/jugador/listar";
     }
 
+    @PostMapping("/BuscarJugador")
+    //VAMOS A RECIBIR EL CAMPO DE BUSQUEDA DEL HTML (campodebusquedadelhtmlrecibido) y lo vamos a llamar
+    //"campodebusquedacontroller"
+    public String buscarJugador (@RequestParam("campodebusquedadelhtmlrecibido") String campodebusquedacontroller,
+                                Model model){
+        //AHORA CREAMOS LA NUEVA LISTA, A PARTIR DEL CAMPO QUE SE PIDIÓ EN LA BÚSQUEDA
+        //LA NUEVA LISTA SE VA A LLAMAR listaobtenidadelabusqueda. Vamos a usar nuestro método del repository
+        //que busca por posicion, que se llama "findByposicionsita", y le vamos a ingresar el parámetro campodebusquedacontroller
+        List<Jugador> listaobtenidadelabusqueda = jugadorRepository.findByposicionsita(campodebusquedacontroller);
+
+        //FINALMENTE, MANDAMOS LA LISTA CON ESE CAMPO AL HTML, Y LO MANDAMOS COMO "listajugadoreshtml", lo ponemos con
+        //el mismo nombre que le pusimos al listado normal para que actualize la tabla
+        model.addAttribute("listajugadoreshtml", listaobtenidadelabusqueda);
+
+        //RETORNAMOS EL HTML DE LA BÚSQUEDA, PERO AHORA YA VA A ESTAR FILTRADO
+        return "jugador/list";
+    }
 }

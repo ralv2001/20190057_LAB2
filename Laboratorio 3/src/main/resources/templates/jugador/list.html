@@ -12,6 +12,11 @@
     <div class="container">
       <h2>Lista Jugadores</h2>
       <a class="btn btn-primary mt-4 mb-4" th:href="@{/jugador/new}">Nuevo Jugador</a>
+      <form method="post" th:action="@{/jugador/BuscarJugador}">
+        <!-- Este valor (campodebusquedadelhtmlrecibido) es el que le estamos pasando al controller cuando el usuario ingresa una búsqueda
+        y da enter-->
+        <input class="form-control" name=campodebusquedadelhtmlrecibido type="text" placeholder="Buscar Jugador por posicon y se ordenará por edad">
+      </form>
       <table class="table table-sm">
         <tr>
           <th>#</th>
@@ -24,6 +29,7 @@
         <!-- Notar que jugadorsito es la variable que va a hacer la iteración en "listajugadoreshtml",
          y "listajugadoreshtml" es la variable
          en verde que se trajo del model. -->
+        <!-- Notar que listajugadoreshtml está siendo sobrrescrito cuando se ingresa una búsqueda-->
         <tr th:each="jugadorsito, info: ${listajugadoreshtml}">
           <td th:text="${info.index + 1}"></td>
           <td th:text="${jugadorsito.nombre}"></td>
